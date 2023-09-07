@@ -5,7 +5,7 @@ SpellBook::SpellBook() {}
 SpellBook::~SpellBook()
 {
     std::map<std::string, ASpell*>::iterator it;
-    for (it = spellInv.begin(); it != spellInv.end(); ++it)
+    for (it = spellInv.begin(); it != spellInv.end();)
     {
         if (it->second)
         {
@@ -13,6 +13,8 @@ SpellBook::~SpellBook()
             spellInv.erase(it->first);
             it = spellInv.begin();
         }
+        else
+            it++;
     }
 }
 

@@ -5,14 +5,15 @@ TargetGenerator::TargetGenerator() {}
 TargetGenerator::~TargetGenerator()
 {
     std::map<std::string, ATarget*>::iterator it;
-    for (it = targetTypes.begin(); it != targetTypes.end(); ++it)
+    for (it = targetTypes.begin(); it != targetTypes.end();)
     {
         if (it->second)
         {
             delete it->second;
             targetTypes.erase(it->first);
             it = targetTypes.begin();
-        }
+        } else
+            it++;
     }
 }
 
